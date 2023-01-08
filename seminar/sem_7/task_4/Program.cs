@@ -1,17 +1,18 @@
-﻿// Задайте двумерный массив размером m*n, заполненный случайными целыми числами
+﻿// Задайте двумерный массив размером m*n,
+// Найдите сумму элементов,
+// находящихся на главной диагонали (с индексами (0,0); (1;1) и т.д.
 
-// m=3 n = 4
-// 1 3 8 19
-// 5 -2 33 -2
-// 77 3 8 1
 
 void PrintArray(int[,] arr) {
+    int count = 0;
     for (int i = 0; i < arr.GetLength(0); i++) {
         for (int j = 0; j < arr.GetLength(1); j++) {
             Console.Write(arr[i, j] + " ");
+            if (i == j) count += arr[i, j];
         }
         Console.WriteLine();
     }
+    Console.WriteLine($"Сумма главной диагонали: {count}");
 }
 
 int EnterData(string str) {
@@ -24,7 +25,7 @@ int[,] FillArr(int rows, int columns, int min, int max) {
     int[,] arr = new int[rows, columns];
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
-            arr[i, j] = new Random().Next(min, max + 1);
+            arr[i, j] = i + j;
         }
     }
     return arr;

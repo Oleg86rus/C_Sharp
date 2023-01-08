@@ -1,9 +1,6 @@
-﻿// Задайте двумерный массив размером m*n, заполненный случайными целыми числами
+﻿// Задайте двумерный массив размером m*n,
+// найдите элементы, у которых оба индекса чётные и замените на их квадраты
 
-// m=3 n = 4
-// 1 3 8 19
-// 5 -2 33 -2
-// 77 3 8 1
 
 void PrintArray(int[,] arr) {
     for (int i = 0; i < arr.GetLength(0); i++) {
@@ -24,7 +21,8 @@ int[,] FillArr(int rows, int columns, int min, int max) {
     int[,] arr = new int[rows, columns];
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < columns; j++) {
-            arr[i, j] = new Random().Next(min, max + 1);
+            if (i % 2 == 0 && j % 2 == 0) arr[i, j] = i*i + j*j;
+            else arr[i, j] = i + j;
         }
     }
     return arr;
